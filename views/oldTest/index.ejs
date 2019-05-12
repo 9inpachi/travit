@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>Wall - Travit</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://api-maps.yandex.ru/2.1/?load=package.full&lang=en_RU" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/fontawesome-all.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+  </head>
+  <body>
+    <div class="header header-main">
+      <div class="container">
+        <div class="search-wrap">
+          <input class="top-search" type="search" name="main_search" />
+          <i id="search-icon" class="fa fa-search"></i>
+        </div>
+      </div>
+    </div>
+    <div id="body">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3">
+            <a href="/"><div class="logo"></div></a>
+          </div>
+          <div class="col-sm-6">
+            <div class="body-content">
+              <div class="create-post">
+                <form action="">
+                  <div class="cr-post-map">
+                    <span>Select a location on map</span>
+                    <div id="map" style="width: 100%; height: 90%;"></div>
+                  </div>
+                  <div class="cr-post-img">
+                    <span>Add Images</span><br />
+                    <span class="add-img-icon"><i class="fas fa-plus"></i></span>
+                  </div>
+                  <div class="cr-post-txt">
+                    <textarea placeholder="About the place..."></textarea>
+                  </div>
+                  <div class="cr-post-btns">
+                    <button class="btn btn-nrml">Post</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <ul class="options">
+              <li>
+                <a href="#settings"><i class="fas fa-cog"></i></a>
+              </li>
+              <li>
+                <a href="#help"><i class="fas fa-question"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <p>Travit &copy; All Rights Reserved 2018</p>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript">
+    var map;
+    ymaps.ready(init);
+    function init(){
+      map = new ymaps.Map('map', {center: [33.7463, 72.8397], zoom: 12});
+      var placeMark = new ymaps.Placemark([33.7463, 72.8397], {
+        hintContent: 'This is some hint',
+        balloonContent: 'This is 72 lat and 72 lng'
+      }, {
+        iconLayout: 'default#image',
+        iconImageHref: 'images/location.png',
+        iconImageSize: [50, 50],
+        iconImageOffset: [0, -50]
+      })
+      map.geoObjects.add(placeMark);
+    }
+    </script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZa35R8oiH2k3ozYZS1PK4jOg_aPci4uA&callback=initMap"
+    async defer></script> -->
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <title>Search Results - Travit</title>
+    <% include partials/header.ejs %>
+
+</head>
+
+<body>
+    <div class="header header-main">
+        <div class="container">
+            <div class="search-wrap">
+                <form action="/search" method="GET">
+                    <input class="top-search" type="search" name="s" />
+                    <button id="search-icon"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="body">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <a href="/">
+                        <div class="logo"></div>
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <div class="body-content">
+                        <% if(searchResults) searchResults.forEach((result) => { %>
+                        <a class="search-result" href="/profile/<%= result.username %>"><%= result.fullname %></a>
+                        <% }); %>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <ul class="options">
+                        <li><a href="#help" alt="Pals" title="Pals"><i class="fas fa-users"></i></a></li>
+                        <li><a href="#settings" alt="Settings" title="Settings"><i class="fas fa-cog"></i></a></li>
+                        <li><a href="/pals" alt="Info" title="Info"><i class="fas fa-question"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <p>Travit &copy; All Rights Reserved 2018</p>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/leaflet-search.js"></script>
+</body>
+
+</html>

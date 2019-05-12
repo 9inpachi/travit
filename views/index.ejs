@@ -1,0 +1,84 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <title>Wall - Travit</title>
+  <% include partials/header.ejs %>
+
+</head>
+
+<body>
+  <div class="header header-main">
+    <div class="container">
+      <div class="search-wrap">
+        <form action="/search" method="GET">
+          <input class="top-search" type="search" name="s" />
+          <button id="search-icon"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="body">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <a href="/">
+            <div class="logo"></div>
+          </a>
+        </div>
+        <div class="col-sm-6">
+          <div class="body-content">
+            <button class="btn btn-nrml create-post-btn"><i class="fa fa-plus"></i> Create a Post</button>
+            <div class="create-post">
+              <form action="" id="create-post-form" method="post">
+                <div class="cr-post-map">
+                  <label>Select a location on map</label>
+                  <a id="crnt-loc-btn">Use Current Location</a>
+                  <div id="cr-post-mapid" style="width: 100%; height: 90%;"></div>
+                </div>
+                <div class="cr-post-img">
+                  <label>Add Images</label>
+                  <div class="add-img-section">
+                    <div class="add-img-images"></div>
+                    <div class="add-img-icon">
+                      <i class="fas fa-plus"></i>
+                      <input type="file" id="add-image-input" title="Add Image" accept="image/*" multiple />
+                    </div>
+                    <div id="add-img-drop">
+                      <p>Drop images here</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cr-post-txt">
+                  <textarea name="cr_post_txt" placeholder="About the place..." required></textarea>
+                </div>
+                <div class="cr-post-btns">
+                  <input type="submit" value="Post" class="btn btn-nrml" id="post-btn">
+                </div>
+                <p class="err"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <ul class="options">
+            <li><a href="/pals" alt="Pals" title="Pals"><i class="fas fa-users"></i></a></li>
+            <li><a href="#settings" alt="Settings" title="Settings"><i class="fas fa-cog"></i></a></li>
+            <li><a href="#help" alt="Info" title="Info"><i class="fas fa-question"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <p>Travit &copy; All Rights Reserved 2018</p>
+  </div>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript" src="js/leaflet-search.js"></script>
+</body>
+
+</html>

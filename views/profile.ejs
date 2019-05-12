@@ -1,0 +1,80 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <title>Profile - Travit</title>
+  <% include partials/header.ejs %>
+
+</head>
+
+<body>
+  <div class="header header-main">
+    <div class="container">
+      <div class="search-wrap">
+        <form action="/search" method="GET">
+          <input class="top-search" type="search" name="s" />
+          <button id="search-icon"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="body">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="profile-img">
+            <img src="/images/profile-img.jpg" />
+          </div>
+        </div>
+        <div class="col-xs-12 text-center">
+          <% if(userInfo){ %>
+          <h2><%= userInfo.fullname %></h2>
+          <div class="profile-details">
+            <h4>Profile Details</h4>
+            <table class="table">
+              <tr>
+                <td>
+                  <h4>User ID</h4>
+                </td>
+                <td>
+                  <h4>Username</h4>
+                </td>
+              </tr>
+              <tr>
+                <td><%= userInfo.userid %></td>
+                <td><%= userInfo.username %></td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Email</h4>
+                </td>
+                <td>
+                  <h4>Date of Birth</h4>
+                </td>
+              </tr>
+              <tr>
+                <td><%= userInfo.fullname %></td>
+                <td><%= userInfo.dob %></td>
+              </tr>
+            </table>
+          </div>
+          <% } if(error){ %>
+          <p>
+            This user does not exist
+          </p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <p>Travit &copy; All Rights Reserved 2018</p>
+  </div>
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/script.js"></script>
+</body>
+
+</html>

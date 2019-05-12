@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>Wall - Travit</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/fontawesome-all.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+  </head>
+  <body>
+    <div class="header header-main">
+      <div class="container">
+        <div class="search-wrap">
+          <input class="top-search" type="search" name="main_search" />
+          <i id="search-icon" class="fa fa-search"></i>
+        </div>
+      </div>
+    </div>
+    <div id="body">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3">
+            <a href="/"><div class="logo"></div></a>
+          </div>
+          <div class="col-sm-6">
+            <div class="body-content">
+              <div class="create-post">
+                <form action="">
+                  <div class="cr-post-map">
+                    <span>Select a location on map</span>
+                    <button id="myLoc">Home</button>
+                    <div id="map" style="width: 100%; height: 90%;"></div>
+                  </div>
+                  <div class="cr-post-img">
+                    <span>Add Images</span><br />
+                    <span class="add-img-icon"><i class="fas fa-plus"></i></span>
+                  </div>
+                  <div class="cr-post-txt">
+                    <textarea placeholder="About the place..."></textarea>
+                  </div>
+                  <div class="cr-post-btns">
+                    <button class="btn btn-nrml">Post</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <ul class="options">
+              <li>
+                <a href="#settings"><i class="fas fa-cog"></i></a>
+              </li>
+              <li>
+                <a href="#help"><i class="fas fa-question"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <p>Travit &copy; All Rights Reserved 2018</p>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript">
+    var map = L.map('map');
+    map.setView([33.7463, 72.8397]);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  	   attribution: ''
+    }).addTo(map);
+    //Marker
+    var markerTaxila = L.marker([33.7463, 72.8397]).addTo(map);
+    markerTaxila.bindPopup('<p>This is a popup</p>');
+    //Custom circle
+    L.circle([33.7463, 72.8397], {
+      color: '#000',
+      fillColor: 'gray',
+      fillOpacity: 0.5,
+      radius: 1000
+    }).addTo(map);
+    //Custom polygon
+    L.polygon([
+            [33.74296963538836, 72.80103206634521],
+            [33.74057865816015, 72.80461549758911],
+            [33.74230944684428, 72.80813455581665],
+            [33.74437921013716, 72.80577421188354],
+            [33.74296963538836, 72.80103206634521]
+          ], {
+      color: 'black',
+      fillColor: 'gray',
+      fillOpacity: 0.5,
+      radius: 500
+    }).addTo(map);
+    //Custom bindPopup
+    //L.popup().setLatLng([33.74296963538836, 72.80103206634521]).setContent('<p>This is a custom popup</p>').openOn(map);
+
+    //Adding marker on events
+    var markerAdded = false;
+    var oldMarker;
+    function addMarker(e){
+      marker = L.marker(e.latlng).bindPopup('This is a new marker');
+      marker.addTo(map);
+      return marker;
+    }
+    map.on('click', function(e){
+      if(!oldMarker){
+        oldMarker = addMarker(e);
+      }else{
+        oldMarker.remove();
+        oldMarker = addMarker(e);
+      }
+    });
+
+    //Current location
+    map.on('locationfound', function(e){
+      var locMarker = addMarker(e);
+      locMarker.bindPopup('Current location');
+      var radius = e.accuracy;
+      L.circle(e.latlng, {
+        color: 'black',
+        fillColor: 'black',
+        fillOpacity: 0.5,
+        radius: radius
+      }).addTo(map);
+    })
+    map.locate({setView: true, maxZoom: 12});
+    </script>
+  </body>
+</html>

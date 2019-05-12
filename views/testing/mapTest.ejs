@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>Wall - Travit</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/fontawesome-all.min.css" type="text/css">
+    <link rel="stylesheet" href="css/leaflet-search.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+  </head>
+  <body>
+    <div class="header header-main">
+      <div class="container">
+        <div class="search-wrap">
+          <input class="top-search" type="search" name="main_search" />
+          <i id="search-icon" class="fa fa-search"></i>
+        </div>
+      </div>
+    </div>
+    <div id="body">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3">
+            <a href="/"><div class="logo"></div></a>
+          </div>
+          <div class="col-sm-6">
+            <div class="body-content">
+              <div class="create-post">
+                <form action="">
+                  <div class="cr-post-map">
+                    <label>Select a location on map</label>
+                    <a id="crnt-loc-btn">Use Current Location</a>
+                    <div id="cr-post-mapid" style="width: 100%; height: 90%;"></div>
+                  </div>
+                  <div class="cr-post-img">
+                    <label>Add Images</label>
+                    <div class="add-img-section">
+                      <div class="add-img-images"></div>
+                      <div class="add-img-icon">
+                        <i class="fas fa-plus"></i>
+                        <input type="file" id="add-image-input" title="Add Image" accept="image/*" multiple />
+                      </div>
+                      <div id="add-img-drop">
+                        <p>Drop images here</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cr-post-txt">
+                    <textarea placeholder="About the place..."></textarea>
+                  </div>
+                  <div class="cr-post-btns">
+                    <button class="btn btn-nrml">Post</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <ul class="options">
+              <li>
+                <a href="#settings"><i class="fas fa-cog"></i></a>
+              </li>
+              <li>
+                <a href="#help"><i class="fas fa-question"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <p>Travit &copy; All Rights Reserved 2018</p>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/leaflet-search.js"></script>
+    <script type="text/javascript">
+    // var map = L.map('map');
+    // map.setView([33.7463, 72.8397], 12);
+    // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  	//    attribution: ''
+    // }).addTo(map);
+    // //Marker
+    // var markerTaxila = L.marker([33.7463, 72.8397]).addTo(map);
+    // markerTaxila.bindPopup('<p>This is a popup</p>');
+    // //Custom circle
+    // L.circle([33.7463, 72.8397], {
+    //   color: '#000',
+    //   fillColor: 'gray',
+    //   fillOpacity: 0.5,
+    //   radius: 1000
+    // }).addTo(map);
+    // //Custom polygon
+    // L.polygon([
+    //         [33.74296963538836, 72.80103206634521],
+    //         [33.74057865816015, 72.80461549758911],
+    //         [33.74230944684428, 72.80813455581665],
+    //         [33.74437921013716, 72.80577421188354],
+    //         [33.74296963538836, 72.80103206634521]
+    //       ], {
+    //   color: 'black',
+    //   fillColor: 'gray',
+    //   fillOpacity: 0.5,
+    //   radius: 500
+    // }).addTo(map);
+    // //Custom bindPopup
+    // //L.popup().setLatLng([33.74296963538836, 72.80103206634521]).setContent('<p>This is a custom popup</p>').openOn(map);
+    //
+    // //Adding marker on events
+    // var markerAdded = false;
+    // var oldMarker;
+    // function addMarker(e){
+    //   marker = L.marker(e.latlng).bindPopup('This is a new marker');
+    //   marker.addTo(map);
+    //   return marker;
+    // }
+    // map.on('click', function(e){
+    //   if(!oldMarker){
+    //     oldMarker = addMarker(e);
+    //   }else{
+    //     oldMarker.remove();
+    //     oldMarker = addMarker(e);
+    //   }
+    // });
+    //
+    // //Current location
+    // map.on('locationfound', function(e){
+    //   var locMarker = addMarker(e);
+    //   locMarker.bindPopup('Current location');
+    //   var radius = e.accuracy;
+    //   L.circle(e.latlng, {
+    //     color: 'black',
+    //     fillColor: 'black',
+    //     fillOpacity: 0.5,
+    //     radius: radius
+    //   }).addTo(map);
+    // })
+    // map.locate({setView: true, maxZoom: 12});
+
+    //post.js
+    var oldMarker;
+    var map = L.map('cr-post-mapid');
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  	   attribution: ''
+    }).addTo(map);
+
+    //Current Location
+    locateUser();
+    var locMarker = L.circleMarker();
+    var locMarkerIns = L.circleMarker();
+    map.on('locationfound', function(e){
+      map.setZoom(13);
+      locMarker.remove();
+      locMarkerIns.remove();
+      locMarker = L.circleMarker(e.latlng, {
+        color: '#146ea7',
+        fillColor: '#146ea7',
+        fillOpacity: 0.3,
+        radius: 20
+      });
+      locMarkerIns = L.circleMarker(e.latlng, {
+        color: '#146ea7',
+        fillColor: '#146ea7',
+        fillOpacity: 0.8,
+        radius: 5
+      });
+      locMarker.addTo(map);
+      locMarkerIns.addTo(map);
+    });
+    map.on('click', function(e){
+      addMarker(e);
+    });
+
+    //Search location
+    searchLoc = new L.Control.Search({
+      url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
+      jsonpParam: 'json_callback',
+      propertyName: 'display_name',
+      propertyLoc: ['lat','lon'],
+      marker: false,
+      autoCollapse: true,
+      autoType: false,
+      minLength: 2
+    });
+    map.addControl(searchLoc);
+    searchLoc.on('search:locationfound', function(e){
+      addMarker(e);
+    });
+
+    //Use current location
+    $('#crnt-loc-btn').click(function(e){
+      e.preventDefault();
+      $(this).css('color', 'red');
+      locateUser();
+      map.on('locationfound', function(e){
+        addMarker(e);
+        $('#crnt-loc-btn').css('color', '');
+      });
+    });
+
+    //functions
+    function locateUser(){
+      map.locate({setView: true, maxZoom: 16, watch: false});
+    }
+    //Adding marker
+    function addMarker(e){
+      if(!oldMarker){
+        oldMarker = L.marker(e.latlng).bindPopup('Selected Location').addTo(map);
+      }else{
+        oldMarker.remove();
+        oldMarker = L.marker(e.latlng).bindPopup('Selected Location').addTo(map);
+      }
+    }
+    //functions end
+
+    //Image upload
+    //Image drag drop upload
+    $(document).on({
+      dragenter: function(){
+        $('#add-img-drop').addClass('active');
+      },
+      dragover: function(e){
+        $('#add-img-drop').addClass('active');
+        e.preventDefault();
+      },
+      dragleave: function(){
+        $('#add-img-drop').removeClass('active');
+      }
+    });
+    var imagesToUpload = new Array();
+    var noOfImages = 0;
+    $('.add-img-section').on('drop', function(e){
+      e.preventDefault();
+      if(e.originalEvent.dataTransfer.items){
+        for(var i=0; i<e.originalEvent.dataTransfer.items.length; i++){
+          if(e.originalEvent.dataTransfer.items[i].type.includes('image')){
+            var droppedFile = e.originalEvent.dataTransfer.items[i].getAsFile();
+            imagesToUpload[noOfImages] = droppedFile;
+            noOfImages++;
+            var reader = new FileReader();
+            reader.readAsDataURL(droppedFile);
+            reader.onload = function(e1){
+              $('.add-img-images').html($('.add-img-images').html()+'<div class="add-img-queue"><img src='+e1.target.result+' /></div>')
+            }
+          }
+        }
+      }
+      console.log(imagesToUpload);
+      console.log(noOfImages + " Total Images");
+      $('#add-img-drop').removeClass('active');
+    });
+
+    $('#add-image-input').change(function(e){
+      var inputFiles = e.target.files;
+      if(inputFiles && inputFiles[0]){
+        for(var i=0; i<inputFiles.length; i++){
+          if(inputFiles[i].type.includes('image')){
+            imagesToUpload[noOfImages] = inputFiles[i];
+            noOfImages++;
+            var reader = new FileReader();
+            reader.readAsDataURL(inputFiles[i]);
+            reader.onload = function(e1){
+              $('.add-img-images').html($('.add-img-images').html()+'<div class="add-img-queue"><img src='+e1.target.result+' /></div>')
+            }
+          }
+        }
+        console.log(imagesToUpload);
+        console.log(noOfImages + " Total Images");
+      }
+
+    });
+    </script>
+  </body>
+</html>

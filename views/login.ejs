@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>Login / Register - Travit</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/fontawesome-all.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+  </head>
+  <body>
+    <div class="header header-login">
+      <div class="container">
+        <img src="images/logo.png" height="50px" />
+        <div class="navigation pull-right">
+          <div class="navbar-header">
+            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dropdown">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="dropdown">
+            <ul class="nav navbar-nav main-nav">
+              <li><a href="#about">About</a></li>
+              <li><a href="#help">Help</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="body">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-xs-12">
+            <div class="welcome-box">
+              <h1>Welcome to Travit</h1>
+              <p>A social platform for travelers</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xs-12">
+            <div class="tabbed-box login-box">
+              <div class="tabs">
+                <li class="active" data-tab="#login-box">Login</li><li data-tab="#register-box">Register</li>
+              </div>
+              <div class="tabs-data">
+                <div class="active tab-data" id="login-box">
+                  <form id="login-form" action="/login" method="post">
+                    <div class="form-group">
+                      <label>Username</label>
+                      <input class="form-control" type="text" name="l_username" />
+                    </div>
+                    <div class="form-group">
+                      <label>Password</label>
+                      <input class="form-control" type="password" name="l_password" />
+                    </div>
+                    <p class="err"></p>
+                    <input class="btn btn-nrml pull-right" type="submit" value="Login" />
+                  </form>
+                </div>
+                <div class="tab-data" id="register-box">
+                  <form id="register-form" action="/register" method="post">
+                    <div class="form-group">
+                      <label>Full Name</label>
+                      <input class="form-control" type="text" name="r_fullname" required />
+                    </div>
+                    <div class="form-group">
+                      <label>Email</label>
+                      <input class="form-control" type="email" name="r_email" required />
+                    </div>
+                    <div class="form-group">
+                      <label>Username</label>
+                      <input class="form-control" type="text" name="r_username" required />
+                    </div>
+                    <div class="form-group">
+                      <label>Date of Birth</label>
+                      <input class="form-control" type="date" name="r_dob" max="1/1/2005" required />
+                    </div>
+                    <div class="form-group">
+                      <label>Password</label>
+                      <input class="form-control" type="password" name="r_password" required />
+                    </div>
+                    <div class="form-group">
+                      <label>Confirm Password</label>
+                      <input class="form-control" type="password" name="r_cpassword" required />
+                    </div>
+                    <input id="register-btn" class="btn btn-nrml pull-right" type="submit" value="Register" />
+                    <p class="err"></p>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <p>Travit &copy; All Rights Reserved 2018</p>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/login-register.js"></script>
+  </body>
+</html>
