@@ -1,15 +1,15 @@
 {
-  "name": "node-restapi",
+  "name": "travit",
   "version": "1.0.0",
-  "description": "",
+  "description": "Social platform for travelers",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": {
-    "name": "Adam",
-    "email": "jstutorials1@gmail.com",
-    "url": "https://www.js-tutorials.com/"
+    "name": "Fawad Ali",
+    "email": "m.fawaadali98@gmail.com"
   },
   "license": "MIT",
   "dependencies": {
